@@ -1,0 +1,2 @@
+class LogAnalystAgent:
+    pass
