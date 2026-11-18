@@ -1,2 +1,0 @@
-class MonitoringClient:
-    pass

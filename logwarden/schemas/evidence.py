@@ -1,2 +1,0 @@
-class EvidenceResponse:
-    pass

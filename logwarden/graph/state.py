@@ -1,2 +1,0 @@
-class InvestigationState:
-    pass
