@@ -1,0 +1,8 @@
+from collections.abc import AsyncIterator
+from sqlalchemy.ext.asyncio import AsyncSession
+from logwarden.db.database import session_factory
+
+
+async def get_session() -> AsyncIterator[AsyncSession]:
+    async with session_factory() as session:
+        yield session

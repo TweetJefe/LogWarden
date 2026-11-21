@@ -1,2 +1,0 @@
-class IncidentRepository:
-    pass
