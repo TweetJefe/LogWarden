@@ -1,10 +1,11 @@
+
+from logwarden.incidents.repository import IncidentRepository
 from logwarden.incidents.schemas import IncidentCreate, IncidentResponse
 
 class IncidentService:
-    def create(self, incident: IncidentCreate) -> IncidentResponse:
-        return IncidentResponse(
-            service_name=incident.service_name,
-            description=incident.description,
-            error_code=incident.error_code,
-            id=1
-        )
+
+    def __init__(self, repository: IncidentRepository):
+        self.repository = repository
+
+    def create(self,incident: IncidentCreate) -> IncidentResponse:
+        return self.repository.create(incident)
