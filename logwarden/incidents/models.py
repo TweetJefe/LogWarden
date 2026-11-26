@@ -1,10 +1,9 @@
 from uuid import UUID
-
 from sqlalchemy import Uuid, text, String, Integer, CheckConstraint
 from sqlalchemy.orm import Mapped, mapped_column
-
 from logwarden.db.base import Base
-
+from datetime import datetime
+from sqlalchemy import DateTime, func
 
 class Incident(Base):
     __tablename__ = 'incidents'
@@ -35,5 +34,18 @@ class Incident(Base):
     error_code: Mapped[int] = mapped_column(
         Integer,
         nullable=False,
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+        onupdate=func.now(),
     )
 

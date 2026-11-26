@@ -1,11 +1,15 @@
 from typing import Annotated
 from fastapi import Depends
+
+from logwarden.db.dependencies import SessionDependency
 from logwarden.incidents.repository import IncidentRepository
 from logwarden.incidents.service import IncidentService
 
 
-def get_incident_repository() -> IncidentRepository:
-    return IncidentRepository()
+def get_incident_repository(
+        session: SessionDependency
+) -> IncidentRepository:
+    return IncidentRepository(session=session)
 
 
 IncidentRepositoryDependency = Annotated[
